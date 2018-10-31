@@ -8,6 +8,7 @@ namespace Shop
         public static void Main(string[] args)
         {
             CreateWebHostBuilder(args).Build().Run();
+            int x;
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
