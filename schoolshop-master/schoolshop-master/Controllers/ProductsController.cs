@@ -5,32 +5,30 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Shop.Models;
+using Shop.Data;
 
 namespace Shop.Controllers
 {
-    public class HomeController : Controller
+    public class ProductsController : Controller
     {
+
+        private readonly ShopContext _db;
+
+        public ProductsController(ShopContext context)
+        {
+            _db = context;
+        }
+
         public IActionResult Index()
         {
             return View();
         }
 
-        public IActionResult About()
+        public IActionResult List()
         {
-            ViewData["Message"] = "Your application description page.";
-
-            return View();
-        }
-
-        public IActionResult Contact()
-        {
-            ViewData["Message"] = "Your contact page.";
-
-            return View();
-        }
-
-        public IActionResult Privacy()
-        {
+            _db.Add(new Product(asd, 1));
+            IEnumerable<Product> products = _db.Products;
+            ViewBag.Products = products;
             return View();
         }
 
