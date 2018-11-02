@@ -16,6 +16,8 @@ namespace Shop.Controllers
 
         public ProductsController(ShopContext context)
         {
+            context.Products.Add(new Product("Ананас", 20));
+            context.SaveChanges();
             _db = context;
         }
 
@@ -26,7 +28,7 @@ namespace Shop.Controllers
 
         public IActionResult List()
         {
-            _db.Add(new Product(asd, 1));
+
             IEnumerable<Product> products = _db.Products;
             ViewBag.Products = products;
             return View();
